@@ -251,10 +251,10 @@ NNFramework_IS_TOP_LEVEL:STATIC=ON
 NNFramework_SOURCE_DIR:STATIC=C:/Users/28762/CLionProjects/NNFramework
 
 //No help, variable specified on the command line.
-Python3_EXECUTABLE:UNINITIALIZED=C:/Users/28762/anaconda3/envs/DigitRecognition/python.exe
+Python3_EXECUTABLE:UNINITIALIZED=C:/Users/28762/anaconda3/envs/NNF/python.exe
 
 //No help, variable specified on the command line.
-Python_EXECUTABLE:UNINITIALIZED=C:/Users/28762/anaconda3/envs/DigitRecognition/python.exe
+Python_EXECUTABLE:UNINITIALIZED=C:/Users/28762/anaconda3/envs/NNF/python.exe
 
 
 ########################
@@ -419,4 +419,16 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_TAPI-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding Python3
+FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[C:/Users/28762/anaconda3/envs/NNF/python.exe][cfound components: Interpreter ][v3.12.0()]
+//Compiler reason failure
+_Python3_Compiler_REASON_FAILURE:INTERNAL=
+//Development reason failure
+_Python3_Development_REASON_FAILURE:INTERNAL=
+_Python3_EXECUTABLE:INTERNAL=C:/Users/28762/anaconda3/envs/NNF/python.exe
+//Python3 Properties
+_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;12;0;64;32;;cp312-win_amd64;;C:\Users\28762\anaconda3\envs\NNF\Lib;C:\Users\28762\anaconda3\envs\NNF\Lib;C:\Users\28762\anaconda3\envs\NNF\Lib\site-packages;C:\Users\28762\anaconda3\envs\NNF\Lib\site-packages
+_Python3_INTERPRETER_SIGNATURE:INTERNAL=fecbfb3773caeeba393f1b018e34bebf
+//NumPy reason failure
+_Python3_NumPy_REASON_FAILURE:INTERNAL=
 

@@ -91,8 +91,8 @@ struct C{
 
 int main(){
 
-    std::cout << Tools::DirectoryHelper::GetCurrentWorkingPath();
-
+    // std::cout << Tools::GenHelper::GetCurrentWorkingPath();
+    std::cout << Tools::GenHelper::GetCurrentWorkingPath();
 
     C c;
     std::cout <<  c.vi;
@@ -102,7 +102,7 @@ int main(){
 
     PyList_Append(sysPath, PyUnicode_FromString("../NNFramework/py"));
 
-    PyObject* pName = PyUnicode_DecodeFSDefault("yolo_detect.py");
+    PyObject* pName = PyUnicode_DecodeFSDefault("yolo_detect");
     PyObject* pModule = PyImport_Import(pName);
     Py_XDECREF(pName);
 
@@ -110,6 +110,7 @@ int main(){
         PyErr_Print();
         std::cerr << "Not found py module";
     }
+
 
 
 

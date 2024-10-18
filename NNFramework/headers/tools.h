@@ -49,18 +49,6 @@ public:
         }
     }
 
-    static bool PipInstall(const std::string& pkg){
-        Py_Initialize();
-
-        PyObject* PipModule = PyImport_ImportModule("pip");
-        if(!PipModule){
-            PyErr
-        }
-
-
-    }
-
-
 
 };
 

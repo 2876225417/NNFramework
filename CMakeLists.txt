@@ -8,12 +8,10 @@ set(CMAKE_BUILD_TYPE Release)
 
 set(OPENCV_DIR "C:/Users/28762/Desktop/cppLibs/opencv")
 set(BOOST_DIR "C:/Users/28762/Desktop/cppLibs/boost_1_86_0/boost")
-set(PYTHON_DIR "C:/Users/28762/AppData/Local/Programs/Python/Python313")
+set(PYTHON_DIR "C:/Users/28762/anaconda3/envs/NNF")
 
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
-#include_directories(
-#        ${PYTHON_DIR}/include
-#)
 
 add_executable(
         ${PROJECT_NAME}
@@ -41,7 +39,7 @@ target_link_libraries(
         ${PROJECT_NAME}
         PRIVATE
         opencv_world4100d.lib
-        ${PYTHON_DIR}/libs/python313.lib
+        ${PYTHON_DIR}/libs/python312.lib
 )
 
 
