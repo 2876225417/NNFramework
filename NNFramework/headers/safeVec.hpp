@@ -29,8 +29,7 @@ public:
         return elems[_idx];
     }
 
-    /* todo: Other interfaces
-     */
+
     void push(const T& _val){
         elems.emplace_back(_val);
     }
