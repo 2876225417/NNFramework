@@ -1,0 +1,9 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles\\NNFramework.dir\\NNFramework\\src\\macro.cpp.obj"
+    }
+  ],
+  "version": 1
+}

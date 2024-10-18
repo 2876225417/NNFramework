@@ -1,0 +1,22 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "Clang",
+	"compiler-simulate-id" : "MSVC",
+	"config" : "Release",
+	"cxx-modules" : {},
+	"dir-cur-bld" : "C:/Users/28762/CLionProjects/NNFramework/cmake-build-debug",
+	"dir-cur-src" : "C:/Users/28762/CLionProjects/NNFramework",
+	"dir-top-bld" : "C:/Users/28762/CLionProjects/NNFramework/cmake-build-debug",
+	"dir-top-src" : "C:/Users/28762/CLionProjects/NNFramework",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"C:\\Users\\28762\\Desktop\\cppLibs\\opencv\\build\\include",
+		"C:\\Users\\28762\\AppData\\Local\\Programs\\Python\\Python313\\include"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "C:/Users/28762/CLionProjects/NNFramework/cmake-build-debug/CMakeFiles/NNFramework.dir"
+}
