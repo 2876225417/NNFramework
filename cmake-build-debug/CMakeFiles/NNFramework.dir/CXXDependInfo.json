@@ -14,7 +14,8 @@
 	"include-dirs" : 
 	[
 		"C:\\Users\\28762\\Desktop\\cppLibs\\opencv\\build\\include",
-		"C:\\Users\\28762\\anaconda3\\envs\\NNF\\include"
+		"C:\\Users\\28762\\anaconda3\\envs\\NNF\\include",
+		"C:\\Users\\28762\\CLionProjects\\NNFramework\\hk\\app"
 	],
 	"language" : "CXX",
 	"linked-target-dirs" : [],

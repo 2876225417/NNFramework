@@ -1,8 +1,20 @@
 # ninja log v6
-505	703	7509326035098092	CMakeFiles/NNFramework.dir/CXX.dd	554c5dd46896a0b4
-1981	2237	7509326049849366	NNFramework.exe	7a3f64aa14858e1
-505	703	7509326035098092	C:/Users/28762/CLionProjects/NNFramework/cmake-build-debug/CMakeFiles/NNFramework.dir/CXXModules.json	554c5dd46896a0b4
-2	1535	7511754988563592	build.ninja	4e4ce3e730468122
-505	703	7509326035098092	CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj.modmap	554c5dd46896a0b4
-4	505	7509326030088759	CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj.ddi	d3133a6f7b315e06
-704	1981	7509326037082866	CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj	a6a83d303d7dbfe4
+3531	4167	7512229317336044	NNFramework.exe	7a3f64aa14858e1
+572	798	7512229287743032	CMakeFiles/NNFramework.dir/CXX.dd	554c5dd46896a0b4
+572	798	7512229287743032	C:/Users/28762/CLionProjects/NNFramework/cmake-build-debug/CMakeFiles/NNFramework.dir/CXXModules.json	554c5dd46896a0b4
+572	798	7512229287743032	CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj.modmap	554c5dd46896a0b4
+1	2319	7512174697137136	build.ninja	4e4ce3e730468122
+6	571	7512229282089968	CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj.ddi	4bbee7b2119e8f6
+798	3530	7512229290010829	CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj	76999d9623b6506e
+4	523	7512231388818081	CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj.ddi	4bbee7b2119e8f6
+523	712	7512231394014515	CMakeFiles/NNFramework.dir/CXX.dd	554c5dd46896a0b4
+523	712	7512231394014515	C:/Users/28762/CLionProjects/NNFramework/cmake-build-debug/CMakeFiles/NNFramework.dir/CXXModules.json	554c5dd46896a0b4
+523	712	7512231394014515	CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj.modmap	554c5dd46896a0b4
+712	2701	7512231395900155	CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj	76999d9623b6506e
+2702	2983	7512231415799305	NNFramework.exe	7a3f64aa14858e1
+5	506	7512232373438659	CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj.ddi	4bbee7b2119e8f6
+507	698	7512232378447830	CMakeFiles/NNFramework.dir/CXX.dd	554c5dd46896a0b4
+507	698	7512232378447830	C:/Users/28762/CLionProjects/NNFramework/cmake-build-debug/CMakeFiles/NNFramework.dir/CXXModules.json	554c5dd46896a0b4
+507	698	7512232378447830	CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj.modmap	554c5dd46896a0b4
+698	2463	7512232380368524	CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj	76999d9623b6506e
+2463	2746	7512232398017714	NNFramework.exe	7a3f64aa14858e1
