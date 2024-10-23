@@ -12,7 +12,7 @@ struct mt_deque{
 private:
     Deque queue;
     std::mutex m_queue;
-    std::condition_variable cv_queueEmpty;  // 告知别的线程队列为空，可以推元素了
+    std::condition_variable cv_queueEmpty;  // 告知别的线程队列不满，可以推元素了
     std::condition_variable cv_queueFull;   // 告知别的线程队列已满，不能推元素了
     std::size_t lim_queue;
 
