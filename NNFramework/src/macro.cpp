@@ -174,55 +174,57 @@ void consumer(){
 //}
 
 
-void t1(){
-    std::this_thread::sleep_for(2s);
-    {
-        std::unique_lock lock(m_msg);
-        msg.push_front("好好学习!\n");
-        cv_msg.notify_one();
-    }/* 每次对 msg 进行写操作时都需要上锁，下同 */
-    std::this_thread::sleep_for(2s);
-    {
-        std::unique_lock lock(m_msg);
-        msg.push_front("天天向上!\n");
-        cv_msg.notify_one();
-    }
-    std::this_thread::sleep_for(2s);
-    {
-        std::unique_lock lock(m_msg);
-        msg.push_front("->我是游文飞!\n");
-        cv_msg.notify_one();
-    }
-    std::this_thread::sleep_for(2s);
-    {/* 特殊消息 */
-        std::unique_lock lock(m_msg);
-        msg.push_front("EXIT"); /* flag for exit */
-        cv_msg.notify_all();
-    }
-}
 
-void t1_1(){
-    std::unique_lock lock(m_msg);
 
-    msg.push_front("好好学习！\n");
-    msg.push_front("天天向上！\n");
-    msg.push_front("->我是游文飞！\n");
-    msg.push_front("EXIT");
+//void t1(){
+//    std::this_thread::sleep_for(2s);
+//    {
+//        std::unique_lock lock(m_msg);
+//        msg.push_front("好好学习!\n");
+//        cv_msg.notify_one();
+//    }/* 每次对 msg 进行写操作时都需要上锁，下同 */
+//    std::this_thread::sleep_for(2s);
+//    {
+//        std::unique_lock lock(m_msg);
+//        msg.push_front("天天向上!\n");
+//        cv_msg.notify_one();
+//    }
+//    std::this_thread::sleep_for(2s);
+//    {
+//        std::unique_lock lock(m_msg);
+//        msg.push_front("->我是游文飞!\n");
+//        cv_msg.notify_one();
+//    }
+//    std::this_thread::sleep_for(2s);
+//    {/* 特殊消息 */
+//        std::unique_lock lock(m_msg);
+//        msg.push_front("EXIT"); /* flag for exit */
+//        cv_msg.notify_all();
+//    }
+//}
 
-    cv_msg.notify_one();
-}
+//void t1_1(){
+//    std::unique_lock lock(m_msg);
+//
+//    msg.push_front("好好学习！\n");
+//    msg.push_front("天天向上！\n");
+//    msg.push_front("->我是游文飞！\n");
+//    msg.push_front("EXIT");
+//
+//    cv_msg.notify_one();
+//}
 
-void t2(){
-    while(1){ /* 一直循环，直到 */
-        std::unique_lock lock(m_msg);
-        while(msg.size() == 0)
-            cv_msg.wait(lock);
-
-        if (msg.back() == "EXIT") break;
-        std::cout << "收到消息(t2)：" << msg.back();
-        msg.pop_back();
-    }
-}
+//void t2(){
+//    while(1){ /* 一直循环，直到 */
+//        std::unique_lock lock(m_msg);
+//        while(msg.size() == 0)
+//            cv_msg.wait(lock);
+//
+//        if (msg.back() == "EXIT") break;
+//        std::cout << "收到消息(t2)：" << msg.back();
+//        msg.pop_back();
+//    }
+//}
 
 void t3(){
     while(1){
@@ -235,12 +237,101 @@ void t3(){
     }
 }
 
+template<class T>
+struct mt_queue{
+private:
+    std::deque<T> queue;
+    std::mutex m_queue;
+    std::condition_variable cv_queue;
+
+public:
+    void push(T value){
+        std::unique_lock lock(m_queue);
+        queue.push_front(std::move(value));
+        cv_queue.notify_one();
+    }
+
+    T pop(){
+        std::unique_lock lock(m_queue);
+        while(queue.empty())
+            cv_queue.wait(lock);
+        T value = std::move(queue.back());
+        queue.pop_back();
+        return value;
+    }
+
+    std::optional<T> try_pop(){
+        std::unique_lock lock(m_queue);
+        if(queue.empty())
+            return std::nullopt;
+        T value = std::move(queue.back());
+        queue.pop_back();
+        return value;
+    }
+
+    std::optional<T> try_pop_for(std::chrono::steady_clock::duration timeout){
+        std::unique_lock lock(m_queue);
+        if(!cv_msg.wait_for(lock,
+                            timeout, /* 超时时间 */
+                            [&]{
+                                return !queue.empty();
+                            }))
+            return std::nullopt;
+        T value = std::move(queue.back());
+        queue.pop_back();
+        return value;
+    }
+
+    std::optional<T> try_pop_until(std::chrono::steady_clock::time_point timeout){
+        std::unique_lock lock(m_queue);
+        if(!cv_msg.wait_until(lock,
+                              timeout, /* 超时时间点 */
+                              [&]{
+                                    return std::nullopt;
+                                }))
+            return std::nullopt;
+        T value  = std::move(queue.back());
+        queue.pop_back();
+        return value;
+    }
+
+};
+
+mt_queue<std::string> msg_q;
+
+void t1(){
+
+    msg_q.push("好好学习!\n");
+    std::this_thread::sleep_for(1s);
+    msg_q.push("天天向上!\n");
+    std::this_thread::sleep_for(1s);
+    msg_q.push("->我是游文飞!\n");
+    std::this_thread::sleep_for(1s);
+    msg_q.push("EXIT");
+}
+
+
+void t2Orig(){
+
+}
+
+void t2() {
+    while (1) {
+        if (auto msg_ = msg_q.try_pop_for(100ms)) {
+            if (*msg_ == "EXIT") break;
+            std::cout << "Received message: " << *msg_;
+        } else {
+            std::cout << "Not receive any messages!\n";
+        }
+    }
+}
+
 int main(){
     auto t1_ = std::chrono::steady_clock::now();
     std::vector<std::jthread> pool;
     pool.push_back(std::jthread(t1));
     pool.push_back(std::jthread(t2));
-    pool.push_back(std::jthread(t3));
+    // pool.push_back(std::jthread(t3));
     pool.clear();
 
     std::cout << std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now().time_since_epoch()).count();

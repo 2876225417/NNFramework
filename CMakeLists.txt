@@ -35,6 +35,7 @@ target_include_directories(
         ${OPENCV_DIR}/build/include # includes of OpenCV
         ${PYTHON_DIR}/include
         ${CMAKE_SOURCE_DIR}/hk/app
+        ${CMAKE_SOURCE_DIR}/NNFramework/headers
         # ${HASKELL_DIR}/include # todo: 待测试 Linux
 )
 
