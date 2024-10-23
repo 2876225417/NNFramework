@@ -24,8 +24,10 @@ add_executable(
         ${PROJECT_NAME}
         #NNFramework/src/mainFW.cpp
         #NNFramework/headers/opencv.h
-        NNFramework/src/macro.cpp
+        # NNFramework/src/macro.cpp
         NNFramework/headers/deprecated.h
+        NNFramework/src/test.cpp
+        NNFramework/headers/mt_queue.hpp
 )
 
 

@@ -244,8 +244,21 @@ private:
     std::mutex m_queue;
     std::condition_variable cv_queue;
 
+    std::condition_variable cv_queueFull;
+
 public:
     void push(T value){
+
+        while(queue.size() >= 4){
+            std::unique_lock lock(m_queue);
+            std::cout << queue.size()  << '\n';
+            cv_queueFull.wait(lock);
+        }
+        queue.push_front(value);
+        cv_queue.notify_one();
+    }
+
+    void pushFixed(T value){
         std::unique_lock lock(m_queue);
         queue.push_front(std::move(value));
         cv_queue.notify_one();
@@ -257,6 +270,7 @@ public:
             cv_queue.wait(lock);
         T value = std::move(queue.back());
         queue.pop_back();
+        cv_queueFull.notify_one();
         return value;
     }
 
@@ -266,8 +280,10 @@ public:
             return std::nullopt;
         T value = std::move(queue.back());
         queue.pop_back();
+        cv_queueFull.notify_one();
         return value;
     }
+
 
     std::optional<T> try_pop_for(std::chrono::steady_clock::duration timeout){
         std::unique_lock lock(m_queue);
@@ -279,6 +295,7 @@ public:
             return std::nullopt;
         T value = std::move(queue.back());
         queue.pop_back();
+        cv_queueFull.notify_one();
         return value;
     }
 
@@ -287,11 +304,12 @@ public:
         if(!cv_msg.wait_until(lock,
                               timeout, /* 超时时间点 */
                               [&]{
-                                    return std::nullopt;
+                                    return !queue.empty();
                                 }))
             return std::nullopt;
         T value  = std::move(queue.back());
         queue.pop_back();
+        cv_queueFull.notify_one();
         return value;
     }
 
@@ -300,44 +318,100 @@ public:
 mt_queue<std::string> msg_q;
 
 void t1(){
-
+    msg_q.push("sending...\n");
+    msg_q.push("sending...\n");
+    msg_q.push("sending...\n");
+    msg_q.push("sending...\n");
     msg_q.push("好好学习!\n");
+    std::cout << "sending...\n";
     std::this_thread::sleep_for(1s);
     msg_q.push("天天向上!\n");
+    std::cout << "sending...\n";
     std::this_thread::sleep_for(1s);
     msg_q.push("->我是游文飞!\n");
+    std::cout << "sending...\n";
     std::this_thread::sleep_for(1s);
     msg_q.push("EXIT");
 }
 
 
 void t2Orig(){
-
+    while(1){
+        auto msg = msg_q.pop();
+        if(msg == "EXIT") break;
+        std::cout << "Received message: " << msg;
+    }
 }
 
 void t2() {
+    std::cout << "To t2\n";
     while (1) {
         if (auto msg_ = msg_q.try_pop_for(100ms)) {
             if (*msg_ == "EXIT") break;
             std::cout << "Received message: " << *msg_;
-        } else {
-            std::cout << "Not receive any messages!\n";
+            // std::this_thread::sleep_for(1s);
         }
     }
 }
 
+
+
+// std::atomic_int64_t counter = 1;
+
+
+int counter = 1;
+std::mutex m_counter;
+
+void compute(int beg, int end){
+    for(int i = beg; i < end; ++i){
+        std::unique_lock lock(m_counter);
+        counter += i;
+    }
+}
+
 int main(){
-    auto t1_ = std::chrono::steady_clock::now();
+    auto start = std::chrono::steady_clock::now();
     std::vector<std::jthread> pool;
-    pool.push_back(std::jthread(t1));
-    pool.push_back(std::jthread(t2));
-    // pool.push_back(std::jthread(t3));
+    for(int i = 0; i < 10000; i += 1)
+        //pool.push_back(std::jthread(compute_, i, i + 1));
     pool.clear();
+    std::cout << "counter: " << counter;
+    auto over = std::chrono::steady_clock::now();
+    std::cout << "\nTime costing: " << over - start;
+    int n; std::cin >> n;
+}
 
-    std::cout << std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+class base{
+public:
+    void func();
+    virtual void func_();
+};
 
-    auto t2_ = std::chrono::steady_clock::now();
-    std::cout << "Time cost: " << t2_ - t1_;
+class derived:public base{
+public:
+    void func1();
+    virtual void func_();
+};
+
+void invoke(base b){
+    b.func();
+}
+
+
+
+
+//int main(){
+//    auto t1_ = std::chrono::steady_clock::now();
+//    std::vector<std::jthread> pool;
+//    pool.push_back(std::jthread(t1));
+//    pool.push_back(std::jthread(t2));
+//    // pool.push_back(std::jthread(t3));
+//    pool.clear();
+//
+//    std::cout << std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+//
+//    auto t2_ = std::chrono::steady_clock::now();
+//    std::cout << "Time cost: " << t2_ - t1_;
 
     //for(auto&& t: pool) t.join();
 
@@ -440,4 +514,4 @@ int main(){
 
     //constexpr Color c = YELLOW;
     //std::cout << get_int_name_dynamic(c);
-}
+//}

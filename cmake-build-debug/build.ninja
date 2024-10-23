@@ -49,17 +49,17 @@ cmake_ninja_workdir = C$:/Users/28762/CLionProjects/NNFramework/cmake-build-debu
 
 build cmake_object_order_depends_target_NNFramework: phony || .
 
-build CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj.ddi: CXX_SCAN__NNFramework_Release C$:/Users/28762/CLionProjects/NNFramework/NNFramework/src/macro.cpp || cmake_object_order_depends_target_NNFramework
-  DEP_FILE = CMakeFiles\NNFramework.dir\NNFramework\src\macro.cpp.obj.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\NNFramework.dir\NNFramework\src\macro.cpp.obj.ddi
+build CMakeFiles/NNFramework.dir/NNFramework/src/test.cpp.obj.ddi: CXX_SCAN__NNFramework_Release C$:/Users/28762/CLionProjects/NNFramework/NNFramework/src/test.cpp || cmake_object_order_depends_target_NNFramework
+  DEP_FILE = CMakeFiles\NNFramework.dir\NNFramework\src\test.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\NNFramework.dir\NNFramework\src\test.cpp.obj.ddi
   FLAGS = -O3 -DNDEBUG -std=gnu++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt
   INCLUDES = -IC:/Users/28762/Desktop/cppLibs/opencv/build/include -IC:/Users/28762/anaconda3/envs/NNF/include -IC:/Users/28762/CLionProjects/NNFramework/hk/app -IC:/Users/28762/CLionProjects/NNFramework/NNFramework/headers
-  OBJ_FILE = CMakeFiles\NNFramework.dir\NNFramework\src\macro.cpp.obj
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles\NNFramework.dir\NNFramework\src\macro.cpp.obj.ddi.i
+  OBJ_FILE = CMakeFiles\NNFramework.dir\NNFramework\src\test.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\NNFramework.dir\NNFramework\src\test.cpp.obj.ddi.i
 
-build CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj: CXX_COMPILER__NNFramework_scanned_Release C$:/Users/28762/CLionProjects/NNFramework/NNFramework/src/macro.cpp | CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj.modmap || cmake_object_order_depends_target_NNFramework CMakeFiles/NNFramework.dir/CXX.dd
-  DEP_FILE = CMakeFiles\NNFramework.dir\NNFramework\src\macro.cpp.obj.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles\NNFramework.dir\NNFramework\src\macro.cpp.obj.modmap
+build CMakeFiles/NNFramework.dir/NNFramework/src/test.cpp.obj: CXX_COMPILER__NNFramework_scanned_Release C$:/Users/28762/CLionProjects/NNFramework/NNFramework/src/test.cpp | CMakeFiles/NNFramework.dir/NNFramework/src/test.cpp.obj.modmap || cmake_object_order_depends_target_NNFramework CMakeFiles/NNFramework.dir/CXX.dd
+  DEP_FILE = CMakeFiles\NNFramework.dir\NNFramework\src\test.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\NNFramework.dir\NNFramework\src\test.cpp.obj.modmap
   FLAGS = -O3 -DNDEBUG -std=gnu++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt
   INCLUDES = -IC:/Users/28762/Desktop/cppLibs/opencv/build/include -IC:/Users/28762/anaconda3/envs/NNF/include -IC:/Users/28762/CLionProjects/NNFramework/hk/app -IC:/Users/28762/CLionProjects/NNFramework/NNFramework/headers
   OBJECT_DIR = CMakeFiles\NNFramework.dir
@@ -68,7 +68,7 @@ build CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj: CXX_COMPILER__NN
   TARGET_PDB = NNFramework.pdb
   dyndep = CMakeFiles/NNFramework.dir/CXX.dd
 
-build CMakeFiles/NNFramework.dir/CXX.dd | C$:/Users/28762/CLionProjects/NNFramework/cmake-build-debug/CMakeFiles/NNFramework.dir/CXXModules.json CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj.modmap: CXX_DYNDEP__NNFramework_Release CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj.ddi | C$:/Users/28762/CLionProjects/NNFramework/cmake-build-debug/CMakeFiles/NNFramework.dir/CXXDependInfo.json
+build CMakeFiles/NNFramework.dir/CXX.dd | C$:/Users/28762/CLionProjects/NNFramework/cmake-build-debug/CMakeFiles/NNFramework.dir/CXXModules.json CMakeFiles/NNFramework.dir/NNFramework/src/test.cpp.obj.modmap: CXX_DYNDEP__NNFramework_Release CMakeFiles/NNFramework.dir/NNFramework/src/test.cpp.obj.ddi | C$:/Users/28762/CLionProjects/NNFramework/cmake-build-debug/CMakeFiles/NNFramework.dir/CXXDependInfo.json
 
 
 # =============================================================================
@@ -78,7 +78,7 @@ build CMakeFiles/NNFramework.dir/CXX.dd | C$:/Users/28762/CLionProjects/NNFramew
 #############################################
 # Link the executable NNFramework.exe
 
-build NNFramework.exe: CXX_EXECUTABLE_LINKER__NNFramework_Release CMakeFiles/NNFramework.dir/NNFramework/src/macro.cpp.obj | C$:/Users/28762/anaconda3/envs/NNF/libs/python312.lib
+build NNFramework.exe: CXX_EXECUTABLE_LINKER__NNFramework_Release CMakeFiles/NNFramework.dir/NNFramework/src/test.cpp.obj | C$:/Users/28762/anaconda3/envs/NNF/libs/python312.lib
   FLAGS = -O3 -DNDEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrt
   LINK_FLAGS = -Xlinker /subsystem:console  -fuse-ld=lld-link
   LINK_LIBRARIES = -lopencv_world4100d.lib  C:/Users/28762/anaconda3/envs/NNF/libs/python312.lib  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -loldnames
