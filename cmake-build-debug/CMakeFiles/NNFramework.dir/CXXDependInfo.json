@@ -16,7 +16,8 @@
 		"C:\\Users\\28762\\Desktop\\cppLibs\\opencv\\build\\include",
 		"C:\\Users\\28762\\anaconda3\\envs\\NNF\\include",
 		"C:\\Users\\28762\\CLionProjects\\NNFramework\\hk\\app",
-		"C:\\Users\\28762\\CLionProjects\\NNFramework\\NNFramework\\headers"
+		"C:\\Users\\28762\\CLionProjects\\NNFramework\\NNFramework\\headers",
+		"C:\\Users\\28762\\CLionProjects\\NNFramework\\NNFramework\\peripheralFramework"
 	],
 	"language" : "CXX",
 	"linked-target-dirs" : [],

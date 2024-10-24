@@ -38,6 +38,7 @@ target_include_directories(
         ${PYTHON_DIR}/include
         ${CMAKE_SOURCE_DIR}/hk/app
         ${CMAKE_SOURCE_DIR}/NNFramework/headers
+        ${CMAKE_SOURCE_DIR}/NNFramework/peripheralFramework
         # ${HASKELL_DIR}/include # todo: 待测试 Linux
 )
 

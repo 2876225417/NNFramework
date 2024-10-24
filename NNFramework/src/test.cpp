@@ -116,7 +116,7 @@ float fun(float a, float b, float weight){
             b_it->second * (1 - weight_id->second));
 }*/
 
-template<const char* info>
+/* template<const char* info>
 struct Temp;
 
 constexpr char a[] = "Hello";
@@ -131,17 +131,62 @@ float fun(const TIn& in){
     auto weight = in.template Get<Weight>();
 
     return a * weight + (1 - weight) * b;
-}
+}*/
+
+/* template<typename... TParameters>
+struct VarTypeDict{
+    template<typename...TTypes>
+    struct Values{
+    public:
+        template<typename TTag, typename TVal>
+        auto Set(TVal&& val)&&;
+
+        template<typename TTag>
+        const auto& Get() const;
+    };
+public:
+    static auto Create(){
+        using namespace NSVarTypeDict;
+        using type = typename Create_<sizeof...(TParameters),Values>::type;
+        return type{ };
+    }
+};*/
 
 
+#include "NSVarTypeDict.hpp"
+
+template<typename...TParameters>
+struct VarTypeDict{
+    template<typename... TTypes>
+    struct Values{
+    public:
+        template<typename TTag, typename TVal>
+        auto Set(TVal&& val)&&;
+
+        template<typename TTag>
+        const auto Get() const;
+    };
+
+    static auto Create(){
+        using namespace NSVarTypeDict;
+        using type = typename Create_<sizeof...(TParameters), Values>::type;
+    }
+};
+
+
+struct A;
+struct B;
+struct C;
 
 
 int main(){
-    std::map<std::string, float> params;
-    params["a"] = 1.3f;
-    params["b"] = 2.4f;
-    params["weight"] = 0.1f;
-    std::cerr << fun(params);
+    VarTypeDict<A, B, C>::Create() ;
+//    std::map<std::string, float> params;
+//    params["a"] = 1.3f;
+//    params["b"] = 2.4f;
+//    params["weight"] = 0.1f;
+
+    // std::cerr << fun(params);
    // Derive::Fun();
 
     //    Derived d;
