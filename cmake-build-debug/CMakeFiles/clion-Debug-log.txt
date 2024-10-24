@@ -1,4 +1,4 @@
 C:\Users\28762\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/28762/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe "-DCMAKE_C_COMPILER=C:/Program Files/LLVM/bin/clang.exe" "-DCMAKE_CXX_COMPILER=C:/Program Files/LLVM/bin/clang++.exe" -G Ninja -DPython_EXECUTABLE=C:/Users/28762/anaconda3/envs/NNF/python.exe -DPython3_EXECUTABLE=C:/Users/28762/anaconda3/envs/NNF/python.exe -S C:\Users\28762\CLionProjects\NNFramework -B C:\Users\28762\CLionProjects\NNFramework\cmake-build-debug
--- Configuring done (1.1s)
+-- Configuring done (1.2s)
 -- Generating done (0.0s)
 -- Build files have been written to: C:/Users/28762/CLionProjects/NNFramework/cmake-build-debug
